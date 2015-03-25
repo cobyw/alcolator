@@ -63,11 +63,13 @@
     //set the background color to light grey
     self.view.backgroundColor = [UIColor lightGrayColor];
     
-    // not sure what this is doing
+    // not sure what this is doing, something about deligating the textfield to the view?
     self.beerPercentTextField.delegate = self;
     
     //sets the placeholder text
-    self.beerPercentTextField.placeholder = NSLocalizedString(@"%Alcohol Content Per Beer" , @"Beer percent placeholder Text");
+    self.beerPercentTextField.placeholder = NSLocalizedString(@"Alcohol Content Per Beer" , @"Beer percent placeholder Text");
+    
+    self.beerPercentTextField.text = @"Test string here!";
     
     //sets the minimum and maximum number of beers
     self.beerCountSlider.minimumValue = 1;
@@ -126,14 +128,12 @@
 
 - (void)sliderValueDidChange:(UISlider *)sender {
     NSLog(@"Slider value changed to %f", sender.value);
+    //this isnt getting called?
     int intBeerNumberFromSlider = sender.value;
     NSString *sliderValue = [NSString stringWithFormat: @"%d", intBeerNumberFromSlider];
     self.numberOfBeersLabel.text = sliderValue;
-    /* not sure what this is doing
-     
-     [self.beerPercentTextField resignFirstResponder];
-     
-     */
+    [self.beerPercentTextField resignFirstResponder];
+
 }
 
 - (void)buttonPressed:(UIButton *)sender {
@@ -144,8 +144,7 @@
     int numberOfBeers = self.beerCountSlider.value;
     int ouncesInOneBeerGlass = 12; //assumes they are 12 oz units of beer
     
-    float alcoholPercentageOfBeer = .05; //to test if its working without the text field[self.beerPercentTextField.text floatValue] / 100;
-    //works with .05 but not with 5/100 or (5/100) why?
+    float alcoholPercentageOfBeer = /*[self.beerPercentTextField.text floatValue]*/5 / 100.;
     NSLog(@"Alcohol percentage of beer is %f", alcoholPercentageOfBeer);
     float ouncesOfAlcoholPerBeer = ouncesInOneBeerGlass * alcoholPercentageOfBeer;
     NSLog(@"ounces of alchohol per beer is %f", ouncesOfAlcoholPerBeer);
@@ -158,12 +157,20 @@
     float alcoholPercentageOfWine = 0.13; //assume 13%
     
     float ouncesOfAlcoholPerWineGlass = ouncesInOneWineGlass * alcoholPercentageOfWine;
-    NSLog(@"ounces of alcohol per wine glass %f", ouncesOfAlcoholPerWineGlass);
     float numberOfWineGlassesEquivalent = ouncesOfAlcoholTotal / ouncesOfAlcoholPerWineGlass;
     NSLog(@"number of wine glasses equic %f", numberOfWineGlassesEquivalent);
     
-    //sets it as an int for better viewing
+    //sets it as an int for better viewing, also rounding!
     int wineGlassesEquiv = numberOfWineGlassesEquivalent;
+    float remainderWine = numberOfWineGlassesEquivalent - wineGlassesEquiv;
+    NSLog(@"remainderWine is %f", remainderWine);
+    //rounds up if the remaining wine is greater than .5
+    if (remainderWine >=.5)
+    {
+        wineGlassesEquiv++;
+        NSLog(@"The wine glasses round up!");
+        
+    }
     NSLog(@"wine glassses as an int %d", wineGlassesEquiv);
     
     
