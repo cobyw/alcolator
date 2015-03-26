@@ -30,7 +30,7 @@
     UITextField *textField =[[UITextField alloc] init];
     UISlider *slider =[[UISlider alloc] init];
     UILabel *label = [[UILabel alloc] init];
-    UILabel *numBeersLabel = [[UILabel alloc] init];
+//    UILabel *numBeersLabel = [[UILabel alloc] init];
     UIButton *button = [[UIButton alloc] init];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
     
@@ -40,7 +40,7 @@
     [self.view addSubview:textField];
     [self.view addSubview:slider];
     [self.view addSubview:label];
-    [self.view addSubview:numBeersLabel];
+//    [self.view addSubview:numBeersLabel];
     [self.view addSubview:button];
     [self.view addGestureRecognizer:tap];
     
@@ -49,7 +49,7 @@
     self.beerPercentTextField = textField;
     self.beerCountSlider = slider;
     self.resultsLabel = label;
-    self.numberOfBeersLabel = numBeersLabel;
+//    self.numberOfBeersLabel = numBeersLabel;
     self.calculateButton = button;
     self.hideKeyboardTapGestureRecognizer = tap;
     
@@ -114,7 +114,8 @@
     
     
     CGFloat bottomOfLabel = CGRectGetMaxY(self.resultsLabel.frame);
-    self.calculateButton.frame = CGRectMake(padding, bottomOfLabel+padding, 200, itemHeight);
+    CGFloat buttonCenterer = (viewWidth - 200)/2;
+    self.calculateButton.frame = CGRectMake(buttonCenterer, bottomOfLabel+padding, 200, itemHeight);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,7 +154,6 @@
     
     int numberOfBeers = self.beerCountSlider.value;
     
-   
     
     int ouncesInOneBeerGlass = 12; //assumes they are 12 oz units of beer
     
@@ -165,13 +165,16 @@
         alcoholPercentageOfBeer = 5/100.;
     }
     
-    //adds a label for how many beers, updates when the button is pushed... used to update when the thing slid BUT NO MORE
+    self.beerPercentTextField.text = [NSString stringWithFormat:@"%.01f %%", alcoholPercentageOfBeer * 100];
+/*
+    //adds a label for how many beers, updates when the button is pushed
     NSString *sliderValue = [NSString stringWithFormat: @"%d", numberOfBeers];
     self.numberOfBeersLabel.text = sliderValue;
+ */
         
-    NSLog(@"Alcohol percentage of beer is %f", alcoholPercentageOfBeer);
+    NSLog(@"Alcohol percentage of beer is %.01f", alcoholPercentageOfBeer);
     float ouncesOfAlcoholPerBeer = ouncesInOneBeerGlass * alcoholPercentageOfBeer;
-    NSLog(@"ounces of alchohol per beer is %f", ouncesOfAlcoholPerBeer);
+    NSLog(@"ounces of alchohol per beer is %.01f", ouncesOfAlcoholPerBeer);
     float ouncesOfAlcoholTotal = ouncesOfAlcoholPerBeer * numberOfBeers;
     NSLog(@"ounces of alcohol total is %f", ouncesOfAlcoholTotal);
     
@@ -182,9 +185,11 @@
     
     float ouncesOfAlcoholPerWineGlass = ouncesInOneWineGlass * alcoholPercentageOfWine;
     float numberOfWineGlassesEquivalent = ouncesOfAlcoholTotal / ouncesOfAlcoholPerWineGlass;
-    NSLog(@"number of wine glasses equic %f", numberOfWineGlassesEquivalent);
+    NSLog(@"number of wine glasses equiv %.01f", numberOfWineGlassesEquivalent);
     
-    //sets it as an int for better viewing, also rounding!
+   /*
+    //sets it as an int for better viewing, also rounding! - removed, switched the output to a float
+    
     int wineGlassesEquiv = numberOfWineGlassesEquivalent;
     float remainderWine = numberOfWineGlassesEquivalent - wineGlassesEquiv;
     NSLog(@"remainderWine is %f", remainderWine);
@@ -193,10 +198,11 @@
     {
         wineGlassesEquiv++;
         NSLog(@"The wine glasses round up!");
-        
+    
+    
     }
     NSLog(@"wine glassses as an int %d", wineGlassesEquiv);
-    
+    */
     
     //chooses to display the correct string for the number of beers/wine glasses
     NSString *beerText;
@@ -212,7 +218,7 @@
     
     NSString *wineText;
     
-    if (wineGlassesEquiv == 1)
+    if (numberOfWineGlassesEquivalent == 1)
     {
         wineText = NSLocalizedString(@"glass", @"singular glass");
     }
@@ -223,7 +229,7 @@
     
     //generate the result text and display it on the label
     
-    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %d %@ of wine.", nil), numberOfBeers, beerText, wineGlassesEquiv, wineText];
+    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.01f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesEquivalent, wineText];
     self.resultsLabel.text = resultText;
 }
 
