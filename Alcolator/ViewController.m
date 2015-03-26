@@ -88,6 +88,8 @@
     
     //Gets rid of the maximum number of lines on the label
     self.resultsLabel.numberOfLines =0;
+    
+    self.title = NSLocalizedString(@"Wine", @"wine");
 }
 
 -(void) viewWillLayoutSubviews {
@@ -100,7 +102,7 @@
     CGFloat itemWidth = viewWidth - padding - padding;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(padding, padding, itemWidth, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(padding, itemHeight + padding + padding, itemWidth, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
     self.beerCountSlider.frame = CGRectMake(padding, bottomOfTextField+padding, itemWidth, itemHeight);

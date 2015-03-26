@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 Bloc. All rights reserved.
 //
 
-#import "ViewController.h"
 #import "AppDelegate.h"
-#import "WhiskeyViewController.h"
+#import "MainMenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,8 +20,9 @@
     // Override point for customization after application launch.
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    ViewController *viewController = [[ViewController alloc] init];
-    self.window.rootViewController = viewController;
+    MainMenuViewController *viewController = [[MainMenuViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
     return YES;

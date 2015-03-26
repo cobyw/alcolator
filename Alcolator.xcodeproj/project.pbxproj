@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB05E9621AC461AF00729D98 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05E9611AC461AF00729D98 /* MainMenuViewController.m */; };
 		CB5758471AC04E75004E2FD4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5758461AC04E75004E2FD4 /* main.m */; };
 		CB57584A1AC04E75004E2FD4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5758491AC04E75004E2FD4 /* AppDelegate.m */; };
 		CB57584D1AC04E75004E2FD4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB57584C1AC04E75004E2FD4 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB05E9601AC461AF00729D98 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		CB05E9611AC461AF00729D98 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		CB5758411AC04E75004E2FD4 /* Alcolator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alcolator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5758451AC04E75004E2FD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB5758461AC04E75004E2FD4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -39,8 +42,8 @@
 		CB57585A1AC04E75004E2FD4 /* AlcolatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlcolatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB57585F1AC04E75004E2FD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB5758601AC04E75004E2FD4 /* AlcolatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlcolatorTests.m; sourceTree = "<group>"; };
-		CB5D6BE61AC398BA004CE956 /* WhiskeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiskeyViewController.h; sourceTree = "<group>"; };
-		CB5D6BE71AC398BA004CE956 /* WhiskeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiskeyViewController.m; sourceTree = "<group>"; };
+		CB5D6BE61AC398BA004CE956 /* WhiskeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WhiskeyViewController.h; path = ../WhiskeyViewController.h; sourceTree = "<group>"; };
+		CB5D6BE71AC398BA004CE956 /* WhiskeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhiskeyViewController.m; path = ../WhiskeyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +67,6 @@
 		CB5758381AC04E75004E2FD4 = {
 			isa = PBXGroup;
 			children = (
-				CB5D6BE61AC398BA004CE956 /* WhiskeyViewController.h */,
-				CB5D6BE71AC398BA004CE956 /* WhiskeyViewController.m */,
 				CB5758431AC04E75004E2FD4 /* Alcolator */,
 				CB57585D1AC04E75004E2FD4 /* AlcolatorTests */,
 				CB5758421AC04E75004E2FD4 /* Products */,
@@ -84,10 +85,14 @@
 		CB5758431AC04E75004E2FD4 /* Alcolator */ = {
 			isa = PBXGroup;
 			children = (
+				CB5D6BE61AC398BA004CE956 /* WhiskeyViewController.h */,
+				CB5D6BE71AC398BA004CE956 /* WhiskeyViewController.m */,
 				CB5758481AC04E75004E2FD4 /* AppDelegate.h */,
 				CB5758491AC04E75004E2FD4 /* AppDelegate.m */,
 				CB57584B1AC04E75004E2FD4 /* ViewController.h */,
 				CB57584C1AC04E75004E2FD4 /* ViewController.m */,
+				CB05E9601AC461AF00729D98 /* MainMenuViewController.h */,
+				CB05E9611AC461AF00729D98 /* MainMenuViewController.m */,
 				CB5758511AC04E75004E2FD4 /* Images.xcassets */,
 				CB5758531AC04E75004E2FD4 /* LaunchScreen.xib */,
 				CB5758441AC04E75004E2FD4 /* Supporting Files */,
@@ -170,6 +175,7 @@
 				TargetAttributes = {
 					CB5758401AC04E75004E2FD4 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = FBKXN8868B;
 					};
 					CB5758591AC04E75004E2FD4 = {
 						CreatedOnToolsVersion = 6.2;
@@ -224,6 +230,7 @@
 				CB5D6BE81AC398BA004CE956 /* WhiskeyViewController.m in Sources */,
 				CB57584A1AC04E75004E2FD4 /* AppDelegate.m in Sources */,
 				CB5758471AC04E75004E2FD4 /* main.m in Sources */,
+				CB05E9621AC461AF00729D98 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,9 +344,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Alcolator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -348,9 +358,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Alcolator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
