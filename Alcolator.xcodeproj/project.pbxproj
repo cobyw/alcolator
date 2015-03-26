@@ -13,6 +13,7 @@
 		CB5758521AC04E75004E2FD4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB5758511AC04E75004E2FD4 /* Images.xcassets */; };
 		CB5758551AC04E75004E2FD4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB5758531AC04E75004E2FD4 /* LaunchScreen.xib */; };
 		CB5758611AC04E75004E2FD4 /* AlcolatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5758601AC04E75004E2FD4 /* AlcolatorTests.m */; };
+		CB5D6BE81AC398BA004CE956 /* WhiskeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6BE71AC398BA004CE956 /* WhiskeyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		CB57585A1AC04E75004E2FD4 /* AlcolatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlcolatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB57585F1AC04E75004E2FD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB5758601AC04E75004E2FD4 /* AlcolatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlcolatorTests.m; sourceTree = "<group>"; };
+		CB5D6BE61AC398BA004CE956 /* WhiskeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiskeyViewController.h; sourceTree = "<group>"; };
+		CB5D6BE71AC398BA004CE956 /* WhiskeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiskeyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 		CB5758381AC04E75004E2FD4 = {
 			isa = PBXGroup;
 			children = (
+				CB5D6BE61AC398BA004CE956 /* WhiskeyViewController.h */,
+				CB5D6BE71AC398BA004CE956 /* WhiskeyViewController.m */,
 				CB5758431AC04E75004E2FD4 /* Alcolator */,
 				CB57585D1AC04E75004E2FD4 /* AlcolatorTests */,
 				CB5758421AC04E75004E2FD4 /* Products */,
@@ -216,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB57584D1AC04E75004E2FD4 /* ViewController.m in Sources */,
+				CB5D6BE81AC398BA004CE956 /* WhiskeyViewController.m in Sources */,
 				CB57584A1AC04E75004E2FD4 /* AppDelegate.m in Sources */,
 				CB5758471AC04E75004E2FD4 /* main.m in Sources */,
 			);
