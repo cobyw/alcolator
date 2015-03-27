@@ -18,9 +18,24 @@
 @property (weak, nonatomic) UITapGestureRecognizer *hideKeyboardTapGestureRecognizer;
 
 
+
 @end
 
 @implementation ViewController
+
+-(instancetype) init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        self.title = NSLocalizedString(@"Wine", @"wine" );
+    }
+    
+    [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+    
+    return self;
+}
 
 - (void)loadView {
     //Allocate and initialize The Overarching View
@@ -30,7 +45,7 @@
     UITextField *textField =[[UITextField alloc] init];
     UISlider *slider =[[UISlider alloc] init];
     UILabel *label = [[UILabel alloc] init];
-//    UILabel *numBeersLabel = [[UILabel alloc] init];
+    UILabel *numBeersLabel = [[UILabel alloc] init];
     UIButton *button = [[UIButton alloc] init];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
     
@@ -40,7 +55,7 @@
     [self.view addSubview:textField];
     [self.view addSubview:slider];
     [self.view addSubview:label];
-//    [self.view addSubview:numBeersLabel];
+    [self.view addSubview:numBeersLabel];
     [self.view addSubview:button];
     [self.view addGestureRecognizer:tap];
     
@@ -49,9 +64,10 @@
     self.beerPercentTextField = textField;
     self.beerCountSlider = slider;
     self.resultsLabel = label;
-//    self.numberOfBeersLabel = numBeersLabel;
+    self.numberOfBeersLabel = numBeersLabel;
     self.calculateButton = button;
     self.hideKeyboardTapGestureRecognizer = tap;
+    
     
 }
 
@@ -75,6 +91,9 @@
     self.beerCountSlider.minimumValue = 1;
     self.beerCountSlider.maximumValue =10;
     
+    //calls the let go of slider thing
+    [self.beerCountSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:(UIControlEventValueChanged)];
+    
     
     //Tells self.calculatebutton that when a finger is lifted from the button while inside the bounds to call self.buttonpressed
     [self.calculateButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -89,7 +108,11 @@
     //Gets rid of the maximum number of lines on the label
     self.resultsLabel.numberOfLines =0;
     
-    self.title = NSLocalizedString(@"Wine", @"wine");
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    NSLog(@"New view controller selected: %@", self.title);
 }
 
 -(void) viewWillLayoutSubviews {
@@ -101,6 +124,8 @@
     CGFloat padding = 20;
     CGFloat itemWidth = viewWidth - padding - padding;
     CGFloat itemHeight = 44;
+    CGFloat buttonSize = 200;
+    CGFloat buttonCenterer = (viewWidth - buttonSize)/2;
     
     self.beerPercentTextField.frame = CGRectMake(padding, itemHeight + padding + padding, itemWidth, itemHeight);
     
@@ -109,15 +134,14 @@
     
     
     CGFloat bottomOfSlider = CGRectGetMaxY(self.beerCountSlider.frame);
-//    self.numberOfBeersLabel.frame = CGRectMake(padding, bottomOfSlider + padding, itemWidth, itemHeight);
+    self.numberOfBeersLabel.frame = CGRectMake(padding, bottomOfSlider + padding, itemWidth, itemHeight);
     
-//    CGFloat bottomOfBearsLabel = CGRectGetMaxY(self.numberOfBeersLabel.frame);
-    self.resultsLabel.frame = CGRectMake(padding, bottomOfSlider+padding, itemWidth, itemHeight);
+    CGFloat bottomOfBearsLabel = CGRectGetMaxY(self.numberOfBeersLabel.frame);
+    self.resultsLabel.frame = CGRectMake(padding, bottomOfBearsLabel+padding, itemWidth, itemHeight);
     
     
     CGFloat bottomOfLabel = CGRectGetMaxY(self.resultsLabel.frame);
-    CGFloat buttonCenterer = (viewWidth - 200)/2;
-    self.calculateButton.frame = CGRectMake(buttonCenterer, bottomOfLabel+padding, 200, itemHeight);
+    self.calculateButton.frame = CGRectMake(buttonCenterer, bottomOfLabel+padding, buttonSize, itemHeight);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,8 +149,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 /* No longer gets called
- 
 - (void)textFieldDidChange:(UITextField *)sender {
     //Makes sure its a number
     NSLog(@"Calls function");
@@ -140,16 +164,18 @@
         NSLog(@"Calls if running");
     }
 }
-
-- (void)sliderValueDidChange:(UISlider *)sender {
-    NSLog(@"Slider value changed to %f", sender.value);
-    int intBeerNumberFromSlider = sender.value;
-    NSString *sliderValue = [NSString stringWithFormat: @"%d beers", intBeerNumberFromSlider];
-    self.numberOfBeersLabel.text = sliderValue;
-    [self.beerPercentTextField resignFirstResponder];
-
-}
 */
+
+- (void)sliderValueDidChange:(NSNotification*)notification {
+
+     int intBeerNumberFromSlider = self.beerCountSlider.value;
+     NSString *sliderValue = [NSString stringWithFormat: @"%d beers", intBeerNumberFromSlider];
+     self.numberOfBeersLabel.text = sliderValue;
+    [self.beerPercentTextField resignFirstResponder];
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", intBeerNumberFromSlider]];
+     
+    
+}
 
 - (void)buttonPressed:(UIButton *)sender {
     [self.beerPercentTextField resignFirstResponder];
